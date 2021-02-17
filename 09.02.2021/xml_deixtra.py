@@ -29,16 +29,14 @@ distance = [math.inf] * COUNT_OF_POINTS
 previous_point = [None] * COUNT_OF_POINTS
 path_fromStart = []
 
-START_POINT = 8
-END_POINT = 1
+START_POINT = 1 - 1 #start
+END_POINT = 9 #end
 
 minimal_distance = 0
-minimal_point = START_POINT - 1
-
-distance[minimal_point] = 0
+distance[START_POINT] = minimal_distance
 
 while minimal_distance < math.inf:
-    currentPoint = minimal_point
+    currentPoint = START_POINT
     used_point[currentPoint] = True
 
     for near_availablePoint in pointsWithRoutes[str(currentPoint + 1)]['routes']:
@@ -54,7 +52,7 @@ while minimal_distance < math.inf:
     for currentPoint in range(COUNT_OF_POINTS):
         if not used_point[currentPoint] and distance[currentPoint] < minimal_distance:
             minimal_distance = distance[currentPoint]
-            minimal_point = currentPoint
+            START_POINT = currentPoint
 
 while END_POINT is not None:
     path_fromStart.insert(0, END_POINT)
@@ -62,4 +60,3 @@ while END_POINT is not None:
 
 print(distance)
 print(path_fromStart)
-#print(path_fromStart)
