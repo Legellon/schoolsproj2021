@@ -58,5 +58,8 @@ while END_POINT is not None:
     path_fromStart.insert(0, END_POINT)
     END_POINT = previous_point[END_POINT - 1]
 
+START_POINT = path_fromStart[0]
+END_POINT = path_fromStart[len(path_fromStart) - 1]
+
 print(distance)
 print(path_fromStart)
