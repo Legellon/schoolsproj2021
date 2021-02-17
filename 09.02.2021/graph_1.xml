@@ -38,14 +38,14 @@
         <route from="6" to="7" vmax="100"/>
         <route from="6" to="5" vmax="100"/>
         <route from="6" to="1" vmax="40"/>
-        <route from="7" to="8" vmax="120"/>
+        <route from="7" to="8" vmax="200"/>
         <route from="7" to="9" vmax="100"/>
         <route from="7" to="2" vmax="80"/>
         <route from="8" to="7" vmax="120"/>
-        <route from="8" to="6" vmax="120"/>
+        <route from="8" to="6" vmax="200"/>
         <route from="9" to="8" vmax="120"/>
         <route from="9" to="10" vmax="120"/>
-        <route from="10" to="7" vmax="100"/>
+        <route from="10" to="7" vmax="200"/>
         <route from="10" to="13" vmax="100"/>
         <route from="10" to="2" vmax="80"/>
         <route from="11" to="10" vmax="80"/>

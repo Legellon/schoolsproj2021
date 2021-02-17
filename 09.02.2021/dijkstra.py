@@ -1,6 +1,6 @@
 from math import inf as INF
 
-def deixtra_XML(pointsWithRoutes, START_POINT, END_POINT, OPERATING_MODE):
+def dijkstra_XML(pointsWithRoutes, START_POINT, END_POINT, OPERATING_MODE):
     COUNT_OF_POINTS = len(pointsWithRoutes.keys())
 
     st_p = START_POINT - 1
