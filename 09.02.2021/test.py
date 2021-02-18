@@ -45,13 +45,14 @@ def drawMap():
             if is_used == False:
                 all_points_used = False
 
+        print(used_points)
+
         if point_from != point_to and (all_points_used != True and (used_points[rnd_nums[0]] != True and used_points[rnd_nums[1]] != True)):
             route = [[point_from, point_to], speed_route]
-            canvas.create_line(point_from[0], point_from[1], point_to[0], point_to[1], arrow=LAST)
-        else:
-            continue
 
-        routes.append(route)
+            canvas.create_line(point_from[0], point_from[1], point_to[0], point_to[1], arrow=LAST)
+
+            routes.append(route)
 
     canvas.pack(side = RIGHT)
 
