@@ -7,11 +7,24 @@ locationMap_root = locationMap.getroot()
 
 xml_dict = readFromXML_toDict(locationMap_root)
 
-START_POINT = 10
-END_POINT = 6
+turns = [[9, 5], [5, 13], [2, 16], [6, 11], [10, 15], [12, 7], [7, 15], [13, 5], [14, 9], [15, 10]]
 
-shortest_way = dijkstra_XML(xml_dict, START_POINT, END_POINT, 0)
-shortest_distance = dijkstra_XML(xml_dict, START_POINT, END_POINT, 1)
+for turn in range(len(turns)):
+    START_POINT = turns[turn][0]
+    END_POINT = turns[turn][1]
 
-print(shortest_way)
-print(shortest_distance)
+    print("Turn:", turn + 1)
+    print("From " + str(START_POINT) + " to " + str(END_POINT))
+
+    shortest_way = dijkstra_XML(xml_dict, START_POINT, END_POINT, 0)
+    shortest_weight = dijkstra_XML(xml_dict, START_POINT, END_POINT, 1)
+
+    print("Shortest way:", shortest_way[0])
+    print("Shortest path:", shortest_weight[0])
+    print("Shortest time of path:", shortest_weight[1][END_POINT-1])
+
+a = {}
+
+a.update({1: 1})
+
+print(a)

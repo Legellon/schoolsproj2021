@@ -50,4 +50,6 @@ def dijkstra_XML(pointsWithRoutes, START_POINT, END_POINT, OPERATING_MODE):
     if len(path_fromStart) == 1:
         path_fromStart = [START_POINT]
 
-    return path_fromStart
+    result = [path_fromStart, weights]
+
+    return result
