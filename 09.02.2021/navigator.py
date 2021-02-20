@@ -22,9 +22,3 @@ for turn in range(len(turns)):
     print("Shortest way:", shortest_way[0])
     print("Shortest path:", shortest_weight[0])
     print("Shortest time of path:", shortest_weight[1][END_POINT-1])
-
-a = {}
-
-a.update({1: 1})
-
-print(a)

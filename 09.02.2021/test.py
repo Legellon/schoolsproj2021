@@ -8,51 +8,80 @@ def delMap():
 def drawMap():
     W = float(E6.get()) - float(E5.get())
     H = float(E8.get()) - float(E7.get())
-    r = 10
 
     canvas = Canvas(top, width=int(W+40), height=int(H+40))
 
-    n_points = int(E1.get())
-    n_routes = int(E2.get())
+    n_points = int(E1.get()) if int(E1.get()) > 2 else 3
+    n_routes = int(E2.get()) if int(E2.get()) > n_points - 1 else n_points - 1
+
+    if n_routes > n_points and n_routes > n_points * (n_points - 1):
+        n_routes = n_points * (n_points - 1)
 
     points = []
 
     while len(points) < n_points:
         X = int(random.randrange(float(E5.get()), float(E6.get())))
         Y = int(random.randrange(float(E7.get()), float(E8.get())))
-        point_routes = 0
 
-        points.append([X, Y])
+        point = {'X': X, 'Y': Y}
+        points.append(point)
 
+        r = 5
         canvas.create_oval(X - r, Y - r, X + r, Y + r, outline="gray", fill="black")
 
     routes = []
 
-    used_points = [False] * n_points
+    used_points = [False] * len(points)
+
 
     while len(routes) < n_routes:
-        rnd_nums = [int(random.randrange(0, n_points - 1)), int(random.randrange(0, n_points - 1))]
+        p_route_from_to = [None, None]
+        speed_newRoute = int(random.randrange(float(E3.get()), float(E4.get())))
 
-        for num in rnd_nums:
-            used_points[num] = True
-
-        point_from = points[rnd_nums[0]]
-        point_to = points[rnd_nums[1]]
-        speed_route = int(random.randrange(float(E3.get()), float(E4.get())))
-
-        all_points_used = True
-        for is_used in used_points:
-            if is_used == False:
-                all_points_used = False
-
+        print(len(routes))
         print(used_points)
 
-        if point_from != point_to and (all_points_used != True and (used_points[rnd_nums[0]] != True and used_points[rnd_nums[1]] != True)):
-            route = [[point_from, point_to], speed_route]
+        if used_points.count(True) != len(points):
 
-            canvas.create_line(point_from[0], point_from[1], point_to[0], point_to[1], arrow=LAST)
+            if used_points.count(False) == 1:
+                p_route_from_to[0] = points[random.randrange(0, len(points)-1)]
 
-            routes.append(route)
+            for newPointIndex in range(p_route_from_to.index(None), 2):
+                p_route_from_to[newPointIndex] = points[used_points.index(False)]
+                used_points[used_points.index(False)] = True
+        else:
+            p_route_from_to[0] = points[random.randrange(0, len(points)-1)]
+            p_route_from_to[1] = points[random.randrange(0, len(points)-1)]
+
+        newRoute = [[p_route_from_to[0], p_route_from_to[1]], speed_newRoute]
+
+        check_copy_routes = False
+        if p_route_from_to[0] == p_route_from_to[1]:
+            continue
+        elif len(routes) > 0:
+            for route in routes:
+                if route[0] == newRoute[0]:
+                    print(route)
+                    print(newRoute)
+                    check_copy_routes = True
+                    break
+        if check_copy_routes:
+            continue
+
+        routes.append(newRoute)
+
+        canvas.create_line(newRoute[0][0]['X'], newRoute[0][0]['Y'], newRoute[0][1]['X'], newRoute[0][1]['Y'], arrow=LAST)
+
+    print(len(points))
+    print(len(routes))
+    for i in range(len(routes)):
+        route = routes[i]
+        for j in range(len(routes)):
+            if i == j:
+                continue
+            else:
+                if(route[0] == routes[j][0]):
+                    print(1)
 
     canvas.pack(side = RIGHT)
 
@@ -67,7 +96,7 @@ E1= Entry(f_menu, bd = 5)
 E1.insert(0,"10")
 E1.pack()
 
-L2= Label(f_menu, text="Paths:")
+L2= Label(f_menu, text="routes:")
 L2.pack()
 E2= Entry(f_menu, bd = 5)
 E2.insert(0,"15")
@@ -117,5 +146,7 @@ B2.pack()
 
 B3=Button(f_menu, text = "Delete map", command = delMap)
 B3.pack()
+
+f_menu
 
 top.mainloop()

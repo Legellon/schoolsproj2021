@@ -46,10 +46,9 @@ def dijkstra_XML(pointsWithRoutes, START_POINT, END_POINT, OPERATING_MODE):
     while en_p is not None:
         path_fromStart.insert(0, en_p)
         en_p = previous_point[en_p - 1]
-
+        
     if len(path_fromStart) == 1:
         path_fromStart = [START_POINT]
 
     result = [path_fromStart, weights]
-
     return result

@@ -1,3 +1,5 @@
-a = [False] * 8
+newRoute = [[[1, 2], 0],[[1, 2], 0],[[1, 2], 0]]
 
-print(a)
+
+
+print(newRoute)
