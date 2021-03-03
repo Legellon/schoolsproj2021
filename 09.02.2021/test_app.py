@@ -138,6 +138,7 @@ def drawMap():
 
     print(len(points))
     print(len(routes))
+    print(routes)
     print(used_points)
 
     canvas.pack(side = RIGHT)
@@ -146,13 +147,13 @@ def saveMap():
     FILE_DIR = os.getcwd()
     FILENAME = "new_graph.xml"
 
-    with open(FILENAME, "w", encoding="utf-8") as file:
-        file.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<map>\n<points>\n")
-        for point_id in range(points):
-            file.write("<point id=\""+str(point_id)+"\" x=\""+str(points[point_id]['X'])+"\" y=\""+str(points[point_id]['Y'])+"\"/>\n")
-        file.write("</points>\n<routes>\n")
-        for route in routes:
-            file.write("<route from=\""+route[]"\"")
+    #with open(FILENAME, "w", encoding="utf-8") as file:
+     #   file.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<map>\n<points>\n")
+      #  for point_id in range(points):
+       #     file.write("<point id=\""+str(point_id)+"\" x=\""+str(points[point_id]['X'])+"\" y=\""+str(points[point_id]['Y'])+"\"/>\n")
+        #file.write("</points>\n<routes>\n")
+        #for route in routes:
+         #   file.write("<route from=\""+route[]"\"")
 
 B1=Button(f_menu, text = "Map Generation", command = drawMap)
 B1.pack()

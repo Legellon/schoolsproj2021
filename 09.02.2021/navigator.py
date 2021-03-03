@@ -1,8 +1,9 @@
 import xml.etree.ElementTree as ET
 from read import readFromXML_toDict
-from dijkstra import dijkstra_XML
+from dijkstra import dijkstra_search
+import os
 
-locationMap = ET.parse("graph_1.xml")
+locationMap = ET.parse('09.02.2021/graph_1.xml')
 locationMap_root = locationMap.getroot()
 
 xml_dict = readFromXML_toDict(locationMap_root)
@@ -16,8 +17,8 @@ for turn in range(len(turns)):
     print("Turn:", turn + 1)
     print("From " + str(START_POINT) + " to " + str(END_POINT))
 
-    shortest_way = dijkstra_XML(xml_dict, START_POINT, END_POINT, 0)
-    shortest_weight = dijkstra_XML(xml_dict, START_POINT, END_POINT, 1)
+    shortest_way = dijkstra_search(xml_dict, START_POINT, END_POINT, 0)
+    shortest_weight = dijkstra_search(xml_dict, START_POINT, END_POINT, 1)
 
     print("Shortest way:", shortest_way[0])
     print("Shortest path:", shortest_weight[0])
